@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S5 Advanced English Exam 1 Interactive Study & Practice Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 4px;
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans min-h-full flex flex-col transition-colors duration-200">
+
+    <!-- Header & Navigation Banner -->
+    <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 sticky top-0 z-30 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Title & Badge -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-brand-600 text-white p-2.5 rounded-xl shadow-md flex items-center justify-center">
+                        <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-base sm:text-lg text-slate-900 dark:text-white leading-tight">S5 Adv. English Exam Hub</h1>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Skillful 4 • Exam 1 Target Mastery</p>
+                    </div>
+                </div>
+
+                <!-- Score, Progress & Dark Mode -->
+                <div class="flex items-center space-x-4">
+                    <div class="hidden sm:flex items-center space-x-3 bg-slate-100 dark:bg-slate-700/60 px-3.5 py-1.5 rounded-full text-xs font-medium">
+                        <span class="flex items-center space-x-1.5 text-amber-600 dark:text-amber-400 font-bold">
+                            <i class="fa-solid fa-trophy"></i>
+                            <span id="global-score-display">0</span> pts
+                        </span>
+                        <span class="text-slate-300 dark:text-slate-600">|</span>
+                        <span class="text-slate-600 dark:text-slate-300">
+                            Completed: <span id="progress-count-display" class="font-bold text-brand-600 dark:text-brand-400">0</span>/<span id="progress-total-display">0</span>
+                        </span>
+                    </div>
+
+                    <button id="theme-toggle" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 focus:outline-none transition-colors">
+                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon hidden text-base"></i>
+                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-base"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Top Level Tabs -->
+            <nav class="flex space-x-1 sm:space-x-6 overflow-x-auto custom-scrollbar border-t border-slate-100 dark:border-slate-700/50 pt-2 pb-0">
+                <button onclick="switchCategory('reading1')" id="cat-btn-reading1" class="cat-nav-btn active-cat border-b-2 border-brand-600 dark:border-brand-400 text-brand-600 dark:text-brand-400 font-semibold py-2.5 px-3 text-xs sm:text-sm whitespace-nowrap flex items-center space-x-2">
+                    <i class="fa-solid fa-chart-line"></i> <span>Reading 1 (pp.10-12)</span>
+                </button>
+                <button onclick="switchCategory('reading2')" id="cat-btn-reading2" class="cat-nav-btn border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium py-2.5 px-3 text-xs sm:text-sm whitespace-nowrap flex items-center space-x-2">
+                    <i class="fa-solid fa-comments"></i> <span>Reading 2 (pp.14-17)</span>
+                </button>
+                <button onclick="switchCategory('author_voice')" id="cat-btn-author_voice" class="cat-nav-btn border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium py-2.5 px-3 text-xs sm:text-sm whitespace-nowrap flex items-center space-x-2">
+                    <i class="fa-solid fa-user-pen"></i> <span>Author's Voice (p.13)</span>
+                </button>
+                <button onclick="switchCategory('vocab')" id="cat-btn-vocab" class="cat-nav-btn border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium py-2.5 px-3 text-xs sm:text-sm whitespace-nowrap flex items-center space-x-2">
+                    <i class="fa-solid fa-book-bookmark"></i> <span>Vocab & Register (pp.18-19)</span>
+                </button>
+                <button onclick="switchCategory('grammar1')" id="cat-btn-grammar1" class="cat-nav-btn border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium py-2.5 px-3 text-xs sm:text-sm whitespace-nowrap flex items-center space-x-2">
+                    <i class="fa-solid fa-code-branch"></i> <span>Grammar: Concessive (p.22)</span>
+                </button>
+                <button onclick="switchCategory('grammar2')" id="cat-btn-grammar2" class="cat-nav-btn border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium py-2.5 px-3 text-xs sm:text-sm whitespace-nowrap flex items-center space-x-2">
+                    <i class="fa-solid fa-puzzle-piece"></i> <span>Grammar: Participles (p.156)</span>
+                </button>
+                <button onclick="switchCategory('ielts_writing')" id="cat-btn-ielts_writing" class="cat-nav-btn border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 font-medium py-2.5 px-3 text-xs sm:text-sm whitespace-nowrap flex items-center space-x-2">
+                    <i class="fa-solid fa-pen-nib"></i> <span>IELTS Writing Hub</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Body -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+        
+        <!-- Controls Bar: Topic Meta & Pillar Switcher (Learn / Remember / Practice) -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
+            <!-- Topic Title Meta -->
+            <div class="flex items-center space-x-3">
+                <span class="p-2.5 rounded-xl bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 font-bold text-sm" id="active-topic-badge">
+                    Skillful 4 Text
+                </span>
+                <div>
+                    <h2 class="font-bold text-base sm:text-lg text-slate-900 dark:text-white" id="active-topic-title">The Rise of Crowdfunding</h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400" id="active-topic-pages">Pages 10, 11 & 12</p>
+                </div>
+            </div>
+
+            <!-- Learn / Remember / Practice Pillar Buttons -->
+            <div class="flex items-center bg-slate-100 dark:bg-slate-700 p-1.5 rounded-xl border border-slate-200 dark:border-slate-600 self-start md:self-auto">
+                <button onclick="switchPillar('learn')" id="pillar-btn-learn" class="pillar-btn bg-white dark:bg-slate-800 text-brand-600 dark:text-brand-400 font-bold px-4 py-2 rounded-lg text-xs sm:text-sm shadow-sm transition-all flex items-center space-x-2">
+                    <i class="fa-solid fa-book-open-reader"></i> <span>Learn</span>
+                </button>
+                <button onclick="switchPillar('remember')" id="pillar-btn-remember" class="pillar-btn text-slate-600 dark:text-slate-300 font-medium px-4 py-2 rounded-lg text-xs sm:text-sm transition-all flex items-center space-x-2 hover:text-slate-900">
+                    <i class="fa-solid fa-brain"></i> <span>Remember</span>
+                </button>
+                <button onclick="switchPillar('practice')" id="pillar-btn-practice" class="pillar-btn text-slate-600 dark:text-slate-300 font-medium px-4 py-2 rounded-lg text-xs sm:text-sm transition-all flex items-center space-x-2 hover:text-slate-900">
+                    <i class="fa-solid fa-pen-to-square"></i> <span>Practice</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Progress Indicator Line -->
+        <div class="w-full bg-slate-200 dark:bg-slate-700 h-1.5 rounded-full mb-6 overflow-hidden">
+            <div id="progress-bar-fill" class="bg-brand-600 h-full w-0 transition-all duration-500"></div>
+        </div>
+
+        <!-- Dynamic Content Mount Area -->
+        <div id="content-container" class="transition-all duration-300">
+            <!-- Rendered dynamically -->
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+                S5 Advanced English Exam 1 Syllabus Suite • Skillful 4 Textbook Mastery Suite (pp. 10-19, 22, 156)
+            </p>
+        </div>
+    </footer>
+
+    <!-- Application Script -->
+    <script>
+        // Module State
+        let currentCategory = 'reading1';
+        let currentPillar = 'learn';
+
+        // Score tracking
+        let globalScore = 0;
+        let completedQuestions = new Set();
+        let totalPracticeItemsCount = 0;
+
+        // Comprehensive Skillful 4 Syllabus Database
+        const syllabusData = {
+            reading1: {
+                title: "Reading 1: The Rise of Crowdfunding",
+                pages: "Skillful 4 • Pages 10, 11, 12",
+                badge: "Seen & Self-Study Unit",
+                learn: {
+                    notes: [
+                        {
+                            title: "Key Vocabulary Preview (p. 10)",
+                            items: [
+                                "<strong>entrepreneur</strong> (n): A person who starts a business with a new idea.",
+                                "<strong>venture capital</strong> (n): Capital/funding from firms for high-risk, large projects.",
+                                "<strong>start-up</strong> (n): A newly created business project.",
+                                "<strong>equity</strong> (n): Shares/ownership stake in a company in exchange for funding.",
+                                "<strong>crowdfunding</strong> (n): Model allowing small investments from a large online crowd.",
+                                "<strong>backers</strong> (n): Individuals who invest small amounts in exchange for perks or equity.",
+                                "<strong>tangible</strong> (adj): Physical, real rewards (e.g., product copies).",
+                                "<strong>philanthropic</strong> (adj): Helping humanitarian or scientific causes without commercial gain."
+                            ]
+                        },
+                        {
+                            title: "Understanding Assumptions in Questions (p. 12)",
+                            items: [
+                                "<strong>Concept:</strong> Interviewers often embed hidden/false assumptions inside questions to test or guide the interviewee.",
+                                "<strong>Example Question:</strong> <em>'How can women compete successfully against men when running a crowdfunding campaign?'</em> (Assumes women are less capable).",
+                                "<strong>Correction Strategy:</strong> Interviewees address false assumptions using empirical data and statistics (e.g., citing that research shows women are ~10% more likely to reach their target investment)."
+                            ]
+                        },
+                        {
+                            title: "Text Extracts & Financial Models (p. 11)",
+                            items: [
+                                "Kickstarter statistics: 69% raised <$10,000; only 0.2% raised >$1,000,000.",
+                                "Overall Kickstarter success rate is approximately 35% (65% fail to reach goals).",
+                                "Having high-quality video pitches and early updates strongly affects success."
+                            ]
+                        }
+                    ],
+                    blueprint: "Crowdfunding allows entrepreneurs to bypass traditional banks and venture capital firms by pitching directly to online backers."
+                },
+                remember: {
+                    flashcards: [
+                        { front: "What is the 'Keep-it-all' model?", back: "Entrepreneurs keep all money raised even if the target isn't reached. Perceived as RISKER for investors, best for smaller projects." },
+                        { front: "What is the 'All-or-nothing' model?", back: "Investors get their money back if the campaign target isn't reached. Perceived as LESS RISKY, best for larger projects." },
+                        { front: "What 3 negative factors reduce campaign success? (p. 11)", back: "1. Spelling errors in text.<br>2. Asking for too much investment.<br>3. Deadlines that are too long." },
+                        { front: "Define 'Equity-based crowdfunding'", back: "Campaigns where backers receive shares/ownership in the company in return for their investment." }
+                    ],
+                    pitfalls: [
+                        "Confusing 'Reward-based' (tangible product copy) with 'Equity-based' (shares in company).",
+                        "Assuming 'Keep-it-all' is safer for investors — it is actually perceived as riskier!"
+                    ]
+                },
+                practice: [
+                    {
+                        id: "r1_q1",
+                        type: "mcq",
+                        question: "According to text data on p. 11, what percentage of Kickstarter campaigns fail to achieve their target funding?",
+                        options: ["35%", "50%", "65%", "69%"],
+                        correct: 2,
+                        explanation: "The text explicitly states Kickstarter currently has around a 35% success rate, meaning 65% of projects fail to get funding."
+                    },
+                    {
+                        id: "r1_q2",
+                        type: "mcq",
+                        question: "Why do investors consider the 'All-or-nothing' crowdfunding model less risky than 'Keep-it-all'?",
+                        options: [
+                            "They receive guaranteed financial interest.",
+                            "If the project doesn't reach its target, they get their money back.",
+                            "The government insures all monetary donations.",
+                            "They are granted immediate equity shares."
+                        ],
+                        correct: 1,
+                        explanation: "Under the All-or-nothing model, investors know if the campaign doesn't achieve its target, they get their money back."
+                    },
+                    {
+                        id: "r1_q3",
+                        type: "cloze",
+                        question: "Crowdfunding makes ____________ (geography / equity / video pitches) irrelevant when finding possible backers.",
+                        prompt: "Fill in the blank from p. 12 close reading exercise:",
+                        correctAnswer: "geography",
+                        explanation: "As stated in Thomas Kerr's interview (p. 11), crowdfunding allows entrepreneurs to reach global investors online regardless of geography."
+                    },
+                    {
+                        id: "r1_q4",
+                        type: "cloze",
+                        question: "Spelling errors, asking for too much money, and having a deadline that is too ____________ give the perception of low quality.",
+                        prompt: "Fill in the exact adjective from text p. 11:",
+                        correctAnswer: "long",
+                        explanation: "Mollick's study found that long deadlines reduce success rates by conveying low quality."
+                    }
+                ]
+            },
+
+            reading2: {
+                title: "Reading 2: Face-to-Face Communication",
+                pages: "Skillful 4 • Pages 14, 15, 16, 17",
+                badge: "Seen Unit",
+                learn: {
+                    notes: [
+                        {
+                            title: "Vocabulary Preview (p. 14)",
+                            items: [
+                                "<strong>ties</strong> (n): Relationships or connections with a person or place.",
+                                "<strong>nurture</strong> (v): To help someone or something to develop.",
+                                "<strong>acquaintance</strong> (n): Someone you know a little, who isn't a close friend.",
+                                "<strong>hyper-connected</strong> (adj): Always linked to people via technology.",
+                                "<strong>narcissists</strong> (n): People who admire themselves too much.",
+                                "<strong>adolescents</strong> (n): Children who are changing into young adults.",
+                                "<strong>anti-social</strong> (adj): Showing a lack of care for others or society.",
+                                "<strong>empathy</strong> (n): Ability to understand or imagine how someone feels."
+                            ]
+                        },
+                        {
+                            title: "Locating Writer's Position (p. 14)",
+                            items: [
+                                "<strong>Evaluative adjectives/adverbs:</strong> <em>disappointingly, disconcerting, risky</em>.",
+                                "<strong>Evaluative & modal verbs:</strong> <em>fail to, may well, appears to, could possibly</em>.",
+                                "<strong>Signposting & contrast connectors:</strong> <em>however, on the flip side, nevertheless, to conclude</em>."
+                            ]
+                        },
+                        {
+                            title: "Core Thesis & Academic References (pp. 15-16)",
+                            items: [
+                                "<strong>Achterhof (2022):</strong> Adolescents reported feeling more positive and less lonely during face-to-face interactions than online.",
+                                "<strong>Turkle (2016):</strong> Face-to-face friendships are 'risky' because they involve real-life unpredictable emotions.",
+                                "<strong>Konrath et al. (2010):</strong> 30-year study of college students proved empathy is declining due to online self-absorption.",
+                                "<strong>Chen (2021):</strong> Virtual video conferencing makes reading non-verbal cues harder unless actively looking for them."
+                            ]
+                        }
+                    ],
+                    blueprint: "Face-to-face interaction is essential for deep empathy, trust, and mental well-being; digital messaging creates superficial ties."
+                },
+                remember: {
+                    flashcards: [
+                        { front: "What happens to online conversations compared to F2F? (p. 17)", back: "Online discussions tend to be much shallower in nature, exchanging simple information rather than complex emotional depth." },
+                        { front: "Why are F2F friendships superior for resolving conflicts?", back: "Because verbal and non-verbal cues (micro-expressions, tone) allow people to spot miscommunication quickly and modify what they say." },
+                        { front: "What did the 30-year study by Konrath et al. prove?", back: "Empathy levels among college students have significantly fallen over 30 years due to narcissistic online behavior." },
+                        { front: "What is the writer's final conclusion? (p. 17)", back: "Digital communication should NOT be completely abandoned, but we must adjust our approach and prioritize in-person interactions." }
+                    ],
+                    pitfalls: [
+                        "Assuming the text advocates banning all social media — the author advocates *adjusting* usage, not abandoning it completely.",
+                        "Thinking video calls completely solve non-verbal cue issues (Chen 2021 proved visual cues are often missed online)."
+                    ]
+                },
+                practice: [
+                    {
+                        id: "r2_q1",
+                        type: "mcq",
+                        question: "What does the writer say about online communication compared to face-to-face communication in Para 3 (p. 17)?",
+                        options: [
+                            "Topics tend to be more challenging.",
+                            "Discussions do not usually last as long.",
+                            "Conversations tend to be shallower in nature.",
+                            "Interactions depend on how familiar speakers are."
+                        ],
+                        correct: 2,
+                        explanation: "Paragraph 3 explicitly states: 'online discussions tend to be much more superficial (shallower) than they are offline'."
+                    },
+                    {
+                        id: "r2_q2",
+                        type: "mcq",
+                        question: "According to research by Achterhof (2022), when did adolescents report feeling least happy and loneliest?",
+                        options: [
+                            "During face-to-face conversations at school.",
+                            "When they were online alone.",
+                            "While video conferencing with teachers.",
+                            "When meeting acquaintances in public."
+                        ],
+                        correct: 1,
+                        explanation: "Achterhof (2022) found adolescents were least happy and loneliest when online alone."
+                    },
+                    {
+                        id: "r2_q3",
+                        type: "mcq",
+                        question: "What conclusion does the author reach in Paragraph 7 regarding digital communication?",
+                        options: [
+                            "It should be completely banned for teenagers.",
+                            "Digital communication should not be completely abandoned, but adjusted.",
+                            "Virtual reality will replace all real-world interactions.",
+                            "Text messaging is superior for workplace productivity."
+                        ],
+                        correct: 1,
+                        explanation: "The text states: 'It would not be helpful to advocate for no digital communication, but it may be helpful to adjust our approach'."
+                    }
+                ]
+            },
+
+            author_voice: {
+                title: "Academic Skills: Locating Author's Voice",
+                pages: "Skillful 4 • Page 13",
+                badge: "Exam Core Technique",
+                learn: {
+                    notes: [
+                        {
+                            title: "Three Primary Voices in Academic Texts (p. 13)",
+                            items: [
+                                "<strong>a) Author's own voice:</strong> Makes claims, interprets findings, or draws conclusions (e.g., <em>'A balance between the two is therefore desirable'</em>).",
+                                "<strong>b) Direct external voice:</strong> Exact quote inside quotation marks + citation (e.g., <em>'\"successful campaigns featured more images...\" (Carradini, 2023)'</em>).",
+                                "<strong>c) Indirect external voice:</strong> Paraphrased research + citation (e.g., <em>'the benefits... can be overshadowed by too many images (Yang et al., 2020)'</em>)."
+                            ]
+                        },
+                        {
+                            title: "Rhetorical Purposes (p. 13 Ex. 2)",
+                            items: [
+                                "<strong>Exemplify a point:</strong> Giving specific cases/evidence.",
+                                "<strong>Draw a conclusion:</strong> Summarizing synthesized research (using <em>therefore, thus</em>).",
+                                "<strong>State an objection:</strong> Introducing counter-arguments (using <em>however, nevertheless</em>).",
+                                "<strong>Make a claim:</strong> Stating the author's primary thesis.",
+                                "<strong>Provide evidence:</strong> Citing empirical data to back up claims."
+                            ]
+                        }
+                    ],
+                    blueprint: "Author's Voice = Controls and synthesizes external voices to build a coherent academic argument."
+                },
+                remember: {
+                    flashcards: [
+                        { front: "Direct vs Indirect External Voice", back: "Direct = Uses quotation marks '...' + citation.<br>Indirect = Uses paraphrased ideas + citation without direct quotes." },
+                        { front: "Is an academic text only about reporting others?", back: "NO! An author's voice is required to link, evaluate, and synthesize external voices." },
+                        { front: "True/False: Author's voice needs to control other voices.", back: "TRUE! External citations should support or contrast the author's overall thesis." }
+                    ],
+                    pitfalls: [
+                        "Failing to distinguish between the author's main claim and an external quote used as evidence.",
+                        "Assuming direct quotes mean the author agrees with them — direct quotes can also be cited to state an objection!"
+                    ]
+                },
+                practice: [
+                    {
+                        id: "av_q1",
+                        type: "mcq",
+                        question: "Identify the voice type for: '“successful campaigns featured more images, links, and gifs” (Carradini, 2023)'",
+                        options: ["Author's own voice", "Direct external voice", "Indirect external voice"],
+                        correct: 1,
+                        explanation: "Because exact text is enclosed in quotation marks with citation, it is a Direct External Voice."
+                    },
+                    {
+                        id: "av_q2",
+                        type: "mcq",
+                        question: "Identify the voice type for: 'A balance between the two is therefore desirable.'",
+                        options: ["Author's own voice", "Direct external voice", "Indirect external voice"],
+                        correct: 0,
+                        explanation: "This statement presents the author's own synthesis and conclusion using the signpost 'therefore'."
+                    },
+                    {
+                        id: "av_q3",
+                        type: "mcq",
+                        question: "Statement: 'Authors of academic texts should avoid critiquing external voices included in the text.' True or False?",
+                        options: ["True", "False"],
+                        correct: 1,
+                        explanation: "False! Academic writers are expected to critically evaluate and critique external research."
+                    }
+                ]
+            },
+
+            vocab: {
+                title: "Vocabulary & Formal Register Development",
+                pages: "Skillful 4 • Pages 18 & 19",
+                badge: "Skillful Core Lexicon",
+                learn: {
+                    notes: [
+                        {
+                            title: "Academic Synonyms Table (p. 18 Ex. 1)",
+                            items: [
+                                "decide (v) → <strong>determine</strong>",
+                                "worrying (adj) → <strong>disconcerting</strong>",
+                                "include (v) → <strong>involve</strong>",
+                                "let (v) → <strong>permit</strong>",
+                                "happening (v) → <strong>occur / occurring</strong>",
+                                "part (n) → <strong>element</strong>",
+                                "remove (v) → <strong>eradicate</strong>",
+                                "shown (v) → <strong>demonstrated</strong>",
+                                "states firmly (v) → <strong>asserts</strong>",
+                                "ask for (v) → <strong>seek / warrant</strong>",
+                                "effect (n) → <strong>repercussion</strong>",
+                                "developments (n) → <strong>advancements</strong>"
+                            ]
+                        },
+                        {
+                            title: "Academic Words & Definitions (p. 19)",
+                            items: [
+                                "<strong>differentiate:</strong> To see/show difference between things.",
+                                "<strong>eventual:</strong> Happening at the end of a process.",
+                                "<strong>evolve:</strong> To gradually develop or change.",
+                                "<strong>resolve:</strong> To find a satisfactory way of dealing with a problem.",
+                                "<strong>beg the question:</strong> To prompt/make someone want to ask a question.",
+                                "<strong>empirical:</strong> Based on real experience or scientific experiments.",
+                                "<strong>modify:</strong> To change slightly to improve.",
+                                "<strong>pursue:</strong> To try to achieve something.",
+                                "<strong>perception:</strong> The way you think about or understand something.",
+                                "<strong>advocate:</strong> To publicly support a policy or action."
+                            ]
+                        }
+                    ],
+                    blueprint: "Elevate informal essay vocabulary by substituting informal verbs with formal academic equivalents."
+                },
+                remember: {
+                    flashcards: [
+                        { front: "Idiom Flashcard: 'Beg the question'", back: "Meaning: To make someone want to ask a follow-up question.<br>Syntax: Often followed by a colon (:) or 'whether/why'." },
+                        { front: "Collocation: 'Advocate'", back: "Used as verb: <em>'advocate less use'</em> or prepositional phrase: <em>'advocate for a policy'</em>." },
+                        { front: "Formal term for 'negative effect'", back: "<strong>Repercussion</strong> (e.g., 'negative repercussions of social media')." }
+                    ],
+                    pitfalls: [
+                        "Confusing 'differentiate' (tell apart) with 'differ' (be different).",
+                        "Using 'beg the question' to mean 'raise a question' in casual speak — in formal logic it has specific nuance!"
+                    ]
+                },
+                practice: [
+                    {
+                        id: "v_q1",
+                        type: "transformation",
+                        question: "Replace the underlined informal words (p. 18): 'Many sociologists find the negative <u>effects</u> of our hyper-connected world <u>worrying</u>.'",
+                        prompt: "Many sociologists find the negative ______________________ of our hyper-connected world ______________________.",
+                        correctAnswer: "repercussions disconcerting",
+                        explanation: "Effects → repercussions; worrying → disconcerting."
+                    },
+                    {
+                        id: "v_q2",
+                        type: "cloze",
+                        question: "The benefits of face-to-face interaction ____________ (begs the question / differentiates / resolves) : Do we have a responsibility to connect in person?",
+                        prompt: "Select the correct academic idiom from p. 19:",
+                        correctAnswer: "begs the question",
+                        explanation: "'Begs the question' is followed by a colon introducing the immediate question."
+                    },
+                    {
+                        id: "v_q3",
+                        type: "cloze",
+                        question: "Is it sensible to ____________ (pursue / modify / eradicate) new friendships with people online?",
+                        prompt: "Fill in the blank from p. 19 Ex. 2:",
+                        correctAnswer: "pursue",
+                        explanation: "'Pursue friendships' means to try to form or seek new friendships."
+                    }
+                ]
+            },
+
+            grammar1: {
+                title: "Grammar: Concessive & Contrastive Clauses",
+                pages: "Skillful 4 • Page 22",
+                badge: "Advanced Syntax",
+                learn: {
+                    notes: [
+                        {
+                            title: "Concessive Clauses (although, even though, though)",
+                            items: [
+                                "Allow writers to acknowledge an alternative view before giving their position.",
+                                "Structure: <code>Even though / Although / Though + Subject + Verb, main clause</code>",
+                                "Example: <em>Even though purchases can be made via social media, it is still not the norm.</em>"
+                            ]
+                        },
+                        {
+                            title: "Sentence Connectors (Nevertheless)",
+                            items: [
+                                "Used across two independent sentences to introduce contrast.",
+                                "Structure: <code>Sentence 1. Nevertheless, Sentence 2.</code>",
+                                "Example: <em>Social media can cause anxiety. Nevertheless, it raises mental health awareness.</em>"
+                            ]
+                        },
+                        {
+                            title: "Adverbial & Prepositional Contrast (Much as, Despite)",
+                            items: [
+                                "<code>Much as + clause:</code> <em>Much as social media takes up time, it strengthens ties.</em>",
+                                "<code>Despite / In spite of + Noun Phrase / Gerund (-ing):</code> <em>Despite constantly using smartphones, not all youth want social media.</em>"
+                            ]
+                        }
+                    ],
+                    blueprint: "Clause connectors require Subject+Verb. Prepositions (Despite/In spite of) require Noun or V-ing!"
+                },
+                remember: {
+                    flashcards: [
+                        { front: "GOLDEN RULE: Can you combine 'Although' and 'But'?", back: "NEVER! Use either 'Although X, Y' OR 'X, but Y'. Combining both is a major exam error." },
+                        { front: "Structure Rule for 'Despite'", back: "Despite + Noun Phrase OR Gerund (-ing).<br>❌ <em>Despite he was tired...</em><br>✔️ <em>Despite being tired... / Despite his fatigue...</em>" },
+                        { front: "How to use 'Much as'", back: "Functions like 'although': <em>Much as I agree with you, we must consider costs.</em>" }
+                    ],
+                    pitfalls: [
+                        "Writing 'Despite of' — Incorrect! Use 'Despite' alone OR 'In spite of'."
+                    ]
+                },
+                practice: [
+                    {
+                        id: "g1_q1",
+                        type: "mcq",
+                        question: "Which of the following sentences is grammatically CORRECT?",
+                        options: [
+                            "Although smartphones are useful, but they disrupt sleep.",
+                            "Despite smartphones are useful, they disrupt sleep.",
+                            "Despite being useful, smartphones can disrupt sleep.",
+                            "In spite smartphones are useful, they disrupt sleep."
+                        ],
+                        correct: 2,
+                        explanation: "'Despite' must be followed by a gerund ('being') or noun phrase, not a clause, and cannot be paired with 'but'."
+                    },
+                    {
+                        id: "g1_q2",
+                        type: "transformation",
+                        question: "Combine using 'In spite of' (p. 22 Ex. 2): 'Smartphones disrupt sleep. However, some apps aid sleep.'",
+                        prompt: "________________________ disrupting sleep, some smartphone apps actually aid sleep.",
+                        correctAnswer: "In spite of",
+                        explanation: "'In spite of' is followed by the gerund 'disrupting'."
+                    },
+                    {
+                        id: "g1_q3",
+                        type: "transformation",
+                        question: "Rewrite using 'Nevertheless' (p. 22): 'Social media increases workplace productivity. However, it can also reduce it.'",
+                        prompt: "It is true that social media can increase productivity. ________________________, it can also reduce it.",
+                        correctAnswer: "Nevertheless",
+                        explanation: "'Nevertheless' links two contrasting independent clauses."
+                    }
+                ]
+            },
+
+            grammar2: {
+                title: "Grammar: Participle Clauses",
+                pages: "Skillful 4 • Page 156",
+                badge: "Academic Writing Mastery",
+                learn: {
+                    notes: [
+                        {
+                            title: "Types of Participles (p. 156)",
+                            items: [
+                                "<strong>Present Participle (-ing):</strong> Active meaning. Used for cause, effect, or condition. (e.g., <em>Wanting to change, managers hired a consultant.</em>)",
+                                "<strong>Past Participle (-ed / V3):</strong> Passive meaning. (e.g., <em>Introduced effectively, change can be positive.</em>)",
+                                "<strong>Time Preposition + Participle (on, while, after, before + -ing):</strong> (e.g., <em>On hearing the report, managers asked questions.</em>)",
+                                "<strong>Perfect Participle (having + V3):</strong> Completed prior action. (e.g., <em>Having found his feet, he accepted the change.</em>)"
+                            ]
+                        }
+                    ],
+                    blueprint: "Participle clauses reduce full adverbial clauses to make academic sentences concise."
+                },
+                remember: {
+                    flashcards: [
+                        { front: "Dangling Participle Warning!", back: "The implied subject of the participle clause MUST match the subject of the main clause!" },
+                        { front: "Active vs Passive Participle", back: "Active = V-ing (e.g., <em>Wanting to create...</em>)<br>Passive = V3 (e.g., <em>Attended by management...</em>)" },
+                        { front: "When to use 'Having + V3'", back: "Use Perfect Participle when action A was completely finished before action B started." }
+                    ],
+                    pitfalls: [
+                        "Dangling participle error: <em>'Walking down the street, a car hit him.'</em> (Makes it sound like the car was walking!)."
+                    ]
+                },
+                practice: [
+                    {
+                        id: "g2_q1",
+                        type: "transformation",
+                        question: "Rewrite with Present Participle (p. 156 Ex. 1): 'Because they wanted to create a change strategy, senior managers brought in a consultant.'",
+                        prompt: "________________________ to create a change strategy, senior managers brought in a consultant.",
+                        correctAnswer: "Wanting",
+                        explanation: "Active reason clause reduces to Present Participle 'Wanting'."
+                    },
+                    {
+                        id: "g2_q2",
+                        type: "transformation",
+                        question: "Rewrite with Time Participle (p. 156 Ex. 1): 'When they heard about the report, managers had questions.'",
+                        prompt: "On ________________________ the report, managers had a lot of questions.",
+                        correctAnswer: "hearing",
+                        explanation: "Preposition 'On' + V-ing ('hearing') replaces 'When they heard'."
+                    },
+                    {
+                        id: "g2_q3",
+                        type: "transformation",
+                        question: "Rewrite with Perfect Participle (p. 156 Ex. 2): 'After they outlined the need for change, managers received positive feedback.'",
+                        prompt: "________________________ the need for change, managers received positive feedback.",
+                        correctAnswer: "Having outlined",
+                        explanation: "Completed past action reduces to Perfect Participle 'Having outlined'."
+                    }
+                ]
+            },
+
+            ielts_writing: {
+                title: "IELTS Writing Task 2 & Academic Usage Hub",
+                pages: "Exam Syllabus Themes: Tech & Communication",
+                badge: "IELTS Academic Band 7+",
+                learn: {
+                    notes: [
+                        {
+                            title: "Opinion (Agree/Disagree) vs Discussion Essay",
+                            items: [
+                                "<strong>Opinion Essay:</strong> Requires a clear, single position stated in the intro thesis and maintained throughout.",
+                                "<strong>Discussion Essay:</strong> Requires discussing BOTH perspectives fully before stating your personal opinion in the conclusion."
+                            ]
+                        },
+                        {
+                            title: "High-Scoring Academic Transition Expressions",
+                            items: [
+                                "<em>It is widely asserted that...</em>",
+                                "<em>Proponents of this view argue that...</em>",
+                                "<em>Conversely, opponents contend that...</em>",
+                                "<em>Evidence strongly points to the conclusion that...</em>"
+                            ]
+                        }
+                    ],
+                    blueprint: "Intro (Paraphrase + Thesis) → Body 1 (Idea + Support) → Body 2 (Idea + Support) → Conclusion."
+                },
+                remember: {
+                    flashcards: [
+                        { front: "What is Academic Hedging?", back: "Avoiding absolute claims! Use softeners like <em>'tends to', 'may potentially', 'evidence suggests'</em>." },
+                        { front: "Discussion Essay Golden Rule", back: "You MUST give equal weight to BOTH sides of the argument before concluding." }
+                    ],
+                    pitfalls: [
+                        "Using informal contractions (don't, can't) or first-person narrative in academic Task 2."
+                    ]
+                },
+                practice: [
+                    {
+                        id: "w_q1",
+                        type: "mcq",
+                        question: "Which thesis statement represents proper academic hedging for an IELTS essay?",
+                        options: [
+                            "Social media completely destroys real human relationships.",
+                            "Evidence suggests that excessive social media usage may strain face-to-face relationships.",
+                            "Everyone knows that digital communication is totally useless.",
+                            "Without doubt, smartphones ruin student intelligence."
+                        ],
+                        correct: 1,
+                        explanation: "'Evidence suggests...' and 'may strain' use proper academic hedging to avoid overgeneralization."
+                    },
+                    {
+                        id: "w_q2",
+                        type: "writing_prompt",
+                        question: "Task 2 Prompt Outline Generator",
+                        promptText: "Prompt: 'Some people believe crowdfunding is superior to traditional banking for new business ventures. To what extent do you agree or disagree?'",
+                        placeholder: "Draft your thesis statement and 2 main topic sentences here..."
+                    }
+                ]
+            }
+        };
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            initThemeToggle();
+            countTotalPracticeItems();
+            renderContent();
+        });
+
+        // Calculate Total Practice Items for Progress Bar
+        function countTotalPracticeItems() {
+            totalPracticeItemsCount = 0;
+            Object.keys(syllabusData).forEach(cat => {
+                if (syllabusData[cat].practice) {
+                    totalPracticeItemsCount += syllabusData[cat].practice.length;
+                }
+            });
+            document.getElementById('progress-total-display').innerText = totalPracticeItemsCount;
+        }
+
+        // Theme Toggle Logic
+        function initThemeToggle() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                darkIcon.classList.remove('hidden');
+                lightIcon.classList.apply ? lightIcon.classList.add('hidden') : null;
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                darkIcon.classList.toggle('hidden');
+                lightIcon.classList.toggle('hidden');
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            });
+        }
+
+        // Switch Category Tabs
+        function switchCategory(catKey) {
+            currentCategory = catKey;
+
+            // Update top bar active state
+            document.querySelectorAll('.cat-nav-btn').forEach(btn => {
+                btn.classList.remove('active-cat', 'border-brand-600', 'dark:border-brand-400', 'text-brand-600', 'dark:text-brand-400', 'font-semibold');
+                btn.classList.add('border-transparent', 'text-slate-500', 'dark:text-slate-400');
+            });
+            const activeBtn = document.getElementById(`cat-btn-${catKey}`);
+            if (activeBtn) {
+                activeBtn.classList.add('active-cat', 'border-brand-600', 'dark:border-brand-400', 'text-brand-600', 'dark:text-brand-400', 'font-semibold');
+                activeBtn.classList.remove('border-transparent', 'text-slate-500', 'dark:text-slate-400');
+            }
+
+            // Update Meta header
+            const meta = syllabusData[catKey];
+            document.getElementById('active-topic-title').innerText = meta.title;
+            document.getElementById('active-topic-pages').innerText = meta.pages;
+            document.getElementById('active-topic-badge').innerText = meta.badge;
+
+            renderContent();
+        }
+
+        // Switch Pillar (Learn / Remember / Practice)
+        function switchPillar(pillarKey) {
+            currentPillar = pillarKey;
+
+            document.querySelectorAll('.pillar-btn').forEach(btn => {
+                btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-brand-600', 'dark:text-brand-400', 'shadow-sm', 'font-bold');
+                btn.classList.add('text-slate-600', 'dark:text-slate-300', 'font-medium');
+            });
+            const activePillarBtn = document.getElementById(`pillar-btn-${pillarKey}`);
+            if (activePillarBtn) {
+                activePillarBtn.classList.add('bg-white', 'dark:bg-slate-800', 'text-brand-600', 'dark:text-brand-400', 'shadow-sm', 'font-bold');
+                activePillarBtn.classList.remove('text-slate-600', 'dark:text-slate-300', 'font-medium');
+            }
+
+            renderContent();
+        }
+
+        // Main Renderer Router
+        function renderContent() {
+            const container = document.getElementById('content-container');
+            const data = syllabusData[currentCategory];
+
+            if (!data) return;
+
+            if (currentPillar === 'learn') {
+                renderLearnPillar(container, data.learn);
+            } else if (currentPillar === 'remember') {
+                renderRememberPillar(container, data.remember);
+            } else if (currentPillar === 'practice') {
+                renderPracticePillar(container, data.practice);
+            }
+        }
+
+        // --- RENDER PILLAR 1: LEARN ---
+        function renderLearnPillar(container, learnData) {
+            let notesHtml = learnData.notes.map(n => `
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-brand-300 transition-all">
+                    <h3 class="font-bold text-slate-900 dark:text-white text-base mb-3 flex items-center space-x-2">
+                        <i class="fa-solid fa-angle-right text-brand-500"></i>
+                        <span>${n.title}</span>
+                    </h3>
+                    <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        ${n.items.map(item => `<li class="flex items-start space-x-2"><span class="text-brand-500 mt-1">•</span><span>${item}</span></li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <!-- Key Pattern & Blueprint Banner -->
+                    <div class="bg-gradient-to-r from-brand-600 to-brand-700 text-white p-6 rounded-2xl shadow-md flex items-start space-x-4">
+                        <div class="p-3 bg-white/10 rounded-xl backdrop-blur-sm mt-1">
+                            <i class="fa-solid fa-lightbulb text-2xl text-amber-300"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-brand-100 font-bold uppercase tracking-wider">Core Academic Blueprint</span>
+                            <h3 class="text-lg font-bold mt-0.5">${learnData.blueprint}</h3>
+                        </div>
+                    </div>
+
+                    <!-- Notes Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        ${notesHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- RENDER PILLAR 2: REMEMBER ---
+        function renderRememberPillar(container, rememberData) {
+            let cardsHtml = rememberData.flashcards.map((fc, index) => `
+                <div class="group perspective-1000 h-52 cursor-pointer" onclick="flipCard(${index})">
+                    <div id="flashcard-${index}" class="relative w-full h-full rounded-2xl transition-all duration-500 transform-style-3d shadow-sm hover:shadow-md border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
+                        <!-- Front -->
+                        <div class="absolute inset-0 w-full h-full p-6 flex flex-col justify-between backface-hidden rounded-2xl">
+                            <div class="flex justify-between items-center text-xs text-slate-400 font-bold tracking-wider">
+                                <span>FLASHCARD ${index + 1}</span>
+                                <i class="fa-solid fa-rotate text-brand-500"></i>
+                            </div>
+                            <p class="text-sm sm:text-base font-semibold text-slate-800 dark:text-slate-100 text-center my-auto leading-snug">${fc.front}</p>
+                            <p class="text-[11px] text-center text-slate-400 uppercase font-bold tracking-wider">Click to Flip</p>
+                        </div>
+                        <!-- Back -->
+                        <div class="absolute inset-0 w-full h-full p-6 flex flex-col justify-between backface-hidden rotate-y-180 bg-brand-50 dark:bg-slate-800 rounded-2xl border-2 border-brand-500">
+                            <div class="flex justify-between items-center text-xs text-brand-600 dark:text-brand-400 font-bold">
+                                <span>ANSWER / KEY RECALL</span>
+                                <i class="fa-solid fa-check-circle"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-700 dark:text-slate-200 text-center my-auto font-medium leading-relaxed">${fc.back}</p>
+                            <p class="text-[11px] text-center text-brand-500 uppercase font-bold tracking-wider">Click to Flip Back</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            let pitfallsHtml = rememberData.pitfalls.map(p => `
+                <li class="flex items-start space-x-2 text-sm text-slate-600 dark:text-slate-300">
+                    <i class="fa-solid fa-triangle-exclamation text-rose-500 mt-1 flex-shrink-0"></i>
+                    <span>${p}</span>
+                </li>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-1">Interactive Recall Flashcards</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Tap any card to test your memory on textbook definitions, rules, and facts.</p>
+                    </div>
+
+                    <!-- Flashcards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        ${cardsHtml}
+                    </div>
+
+                    <!-- Exam Warnings & Pitfalls -->
+                    <div class="bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 p-6 rounded-2xl">
+                        <h4 class="font-bold text-rose-900 dark:text-rose-200 text-sm mb-3 flex items-center space-x-2">
+                            <i class="fa-solid fa-shield-halved text-rose-500"></i>
+                            <span>Common Exam Pitfalls & Traps to Avoid</span>
+                        </h4>
+                        <ul class="space-y-2.5">
+                            ${pitfallsHtml}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        function flipCard(index) {
+            const card = document.getElementById(`flashcard-${index}`);
+            if (card) card.classList.toggle('rotate-y-180');
+        }
+
+        // --- RENDER PILLAR 3: PRACTICE ---
+        function renderPracticePillar(container, practiceData) {
+            if (!practiceData || practiceData.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-slate-500">No practice questions for this section yet.</div>`;
+                return;
+            }
+
+            let questionsHtml = practiceData.map((q, idx) => {
+                const isAnswered = completedQuestions.has(q.id);
+
+                if (q.type === 'mcq') {
+                    const opts = q.options.map((opt, i) => `
+                        <button onclick="checkMCQ('${q.id}', ${i}, ${q.correct})" id="opt-${q.id}-${i}" ${isAnswered ? 'disabled' : ''} class="opt-btn-${q.id} w-full text-left p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 text-sm font-medium transition-all flex items-center justify-between">
+                            <span>${opt}</span>
+                            <i class="fa-regular fa-circle text-slate-400 indicator-icon"></i>
+                        </button>
+                    `).join('');
+
+                    return `
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 text-xs px-3 py-1 rounded-full font-bold">Question ${idx + 1} • MCQ</span>
+                            </div>
+                            <p class="font-bold text-slate-900 dark:text-white text-base leading-snug">${q.question}</p>
+                            <div class="space-y-2.5">
+                                ${opts}
+                            </div>
+                            <div id="feedback-${q.id}" class="hidden p-4 rounded-xl text-xs leading-relaxed font-medium"></div>
+                        </div>
+                    `;
+                } else if (q.type === 'cloze' || q.type === 'transformation') {
+                    return `
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 text-xs px-3 py-1 rounded-full font-bold">Question ${idx + 1} • ${q.type === 'cloze' ? 'Fill in Blank' : 'Sentence Transformation'}</span>
+                            </div>
+                            <p class="font-bold text-slate-900 dark:text-white text-base leading-snug">${q.question}</p>
+                            ${q.prompt ? `<p class="text-xs text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-700 font-mono">${q.prompt}</p>` : ''}
+                            
+                            <div class="flex flex-col sm:flex-row gap-2.5">
+                                <input type="text" id="input-${q.id}" placeholder="Type your answer here..." class="flex-grow p-3.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                <button onclick="checkInputQuestion('${q.id}', '${q.correctAnswer || q.correct}')" class="px-6 py-3.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-sm font-bold transition-all shadow-sm">Submit</button>
+                            </div>
+                            <div id="feedback-${q.id}" class="hidden p-4 rounded-xl text-xs leading-relaxed font-medium"></div>
+                        </div>
+                    `;
+                } else if (q.type === 'writing_prompt') {
+                    return `
+                        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
+                            <div class="flex justify-between items-start">
+                                <span class="bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-300 text-xs px-3 py-1 rounded-full font-bold">IELTS Writing Task 2 Outline</span>
+                            </div>
+                            <p class="font-bold text-slate-900 dark:text-white text-base leading-relaxed">${q.promptText}</p>
+                            
+                            <textarea id="input-${q.id}" rows="4" placeholder="${q.placeholder}" class="w-full p-4 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 custom-scrollbar"></textarea>
+
+                            <div class="flex justify-between items-center">
+                                <button onclick="checkWritingOutline('${q.id}')" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all flex items-center space-x-2">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                    <span>Check Outline & Add Score</span>
+                                </button>
+                            </div>
+                            <div id="feedback-${q.id}" class="hidden p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-xs space-y-2"></div>
+                        </div>
+                    `;
+                }
+            }).join('');
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white">Exam Practice Exercises</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Complete exercises to test your textbook mastery and accumulate score points.</p>
+                        </div>
+                        <button onclick="resetCategoryQuiz()" class="text-xs text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 underline font-medium">Reset Section</button>
+                    </div>
+                    ${questionsHtml}
+                </div>
+            `;
+        }
+
+        // Check MCQ Answers
+        function checkMCQ(qId, selectedIdx, correctIdx) {
+            const data = syllabusData[currentCategory].practice.find(q => q.id === qId);
+            const feedbackEl = document.getElementById(`feedback-${qId}`);
+
+            document.querySelectorAll(`.opt-btn-${qId}`).forEach((btn, i) => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-slate-50', 'dark:hover:bg-slate-750');
+                if (i === correctIdx) {
+                    btn.classList.add('bg-emerald-50', 'dark:bg-emerald-950/40', 'border-emerald-500', 'text-emerald-900', 'dark:text-emerald-200');
+                    btn.querySelector('.indicator-icon').className = 'fa-solid fa-circle-check text-emerald-500';
+                } else if (i === selectedIdx) {
+                    btn.classList.add('bg-rose-50', 'dark:bg-rose-950/40', 'border-rose-500', 'text-rose-900', 'dark:text-rose-200');
+                    btn.querySelector('.indicator-icon').className = 'fa-solid fa-circle-xmark text-rose-500';
+                }
+            });
+
+            feedbackEl.classList.remove('hidden');
+            if (selectedIdx === correctIdx) {
+                feedbackEl.className = 'p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200';
+                feedbackEl.innerHTML = `<i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> <strong>Correct!</strong> ${data.explanation}`;
+                markCompleted(qId, 10);
+            } else {
+                feedbackEl.className = 'p-4 rounded-xl text-xs leading-relaxed font-medium bg-rose-100 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200';
+                feedbackEl.innerHTML = `<i class="fa-solid fa-xmark text-rose-600 mr-1.5"></i> <strong>Incorrect.</strong> ${data.explanation}`;
+                markCompleted(qId, 0);
+            }
+        }
+
+        // Check Input / Transformation Answers
+        function checkInputQuestion(qId, correctAnswer) {
+            const inputVal = document.getElementById(`input-${qId}`).value.trim();
+            const feedbackEl = document.getElementById(`feedback-${qId}`);
+            const data = syllabusData[currentCategory].practice.find(q => q.id === qId);
+
+            if (!inputVal) return;
+
+            feedbackEl.classList.remove('hidden');
+
+            const isCorrect = inputVal.toLowerCase() === correctAnswer.toLowerCase();
+            if (isCorrect) {
+                feedbackEl.className = 'p-4 rounded-xl text-xs leading-relaxed font-medium bg-emerald-100 dark:bg-emerald-950/60 border border-emerald-300 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200';
+                feedbackEl.innerHTML = `<i class="fa-solid fa-check text-emerald-600 mr-1.5"></i> <strong>Correct Answer!</strong> ${data.explanation}`;
+                markCompleted(qId, 10);
+            } else {
+                feedbackEl.className = 'p-4 rounded-xl text-xs leading-relaxed font-medium bg-rose-100 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 text-rose-900 dark:text-rose-200';
+                feedbackEl.innerHTML = `<i class="fa-solid fa-xmark text-rose-600 mr-1.5"></i> <strong>Expected:</strong> "${correctAnswer}". ${data.explanation}`;
+                markCompleted(qId, 0);
+            }
+        }
+
+        // Writing Outline Validation
+        function checkWritingOutline(qId) {
+            const text = document.getElementById(`input-${qId}`).value.trim();
+            const feedbackEl = document.getElementById(`feedback-${qId}`);
+
+            if (text.length < 15) {
+                feedbackEl.classList.remove('hidden');
+                feedbackEl.className = 'p-3.5 rounded-xl text-xs bg-amber-100 dark:bg-amber-950/60 border border-amber-300 text-amber-900 dark:text-amber-200';
+                feedbackEl.innerHTML = '<i class="fa-solid fa-exclamation mr-1"></i> Please type out your outline points first before evaluating.';
+                return;
+            }
+
+            feedbackEl.classList.remove('hidden');
+            feedbackEl.className = 'p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-xs space-y-2 text-emerald-900 dark:text-emerald-200';
+            feedbackEl.innerHTML = `
+                <div class="font-bold flex items-center space-x-1.5">
+                    <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                    <span>Outline Checked (+15 pts)</span>
+                </div>
+                <p><strong>Evaluation Criteria:</strong></p>
+                <ul class="list-disc list-inside space-y-1 text-slate-700 dark:text-slate-300">
+                    <li>Intro paraphrase & stance explicitly defined.</li>
+                    <li>Balanced supporting arguments formatted with cohesive devices.</li>
+                </ul>
+            `;
+            markCompleted(qId, 15);
+        }
+
+        // Global Progress Tracker
+        function markCompleted(qId, pts) {
+            if (!completedQuestions.has(qId)) {
+                completedQuestions.add(qId);
+                globalScore += pts;
+
+                document.getElementById('global-score-display').innerText = globalScore;
+                document.getElementById('progress-count-display').innerText = completedQuestions.size;
+
+                const percent = (completedQuestions.size / totalPracticeItemsCount) * 100;
+                document.getElementById('progress-bar-fill').style.width = `${percent}%`;
+            }
+        }
+
+        // Reset Quiz for Active Category
+        function resetCategoryQuiz() {
+            renderContent();
+        }
+    </script>
+</body>
+</html>
