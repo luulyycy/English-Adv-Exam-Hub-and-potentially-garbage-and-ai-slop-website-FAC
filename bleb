@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S5 English Exam 1 - Study Guide</title>
+<style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
+    h1, h2, h3 { color: #2c3e50; }
+    .section-btn { background-color: #3498db; color: white; border: none; padding: 10px 15px; cursor: pointer; margin-right: 5px; margin-bottom: 10px; border-radius: 4px; }
+    .section-btn:hover { background-color: #2980b9; }
+    .tab-content { display: none; background: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .active { display: block; }
+    .vocab-cover { background-color: #2c3e50; color: #2c3e50; padding: 2px 8px; border-radius: 4px; cursor: pointer; transition: color 0.3s; }
+    .vocab-cover.revealed { color: white; }
+    .audio-btn { font-size: 0.8em; background: #e0e0e0; padding: 2px 5px; border-radius: 3px; cursor: pointer; }
+    .practice-box { border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<h1>S5 English Exam 1 Prep Guide</h1>
+<p>Exam Date: 9th November, 2026 (Monday)[cite: 1]</p>
+
+<div>
+    <button class="section-btn" onclick="openTab('reading1')">Reading 1 (Unit 1.2)</button>
+    <button class="section-btn" onclick="openTab('reading2')">Reading 2 (Unit 1.1)</button>
+    <button class="section-btn" onclick="openTab('usage')">Usage & Grammar</button>
+    <button class="section-btn" onclick="openTab('vocab')">Vocabulary & Idioms</button>
+    <button class="section-btn" onclick="openTab('writing')">IELTS Writing</button>
+</div>
+
+<!-- READING 1 -->
+<div id="reading1" class="tab-content active">
+    <h2>Reading 1: The role of face-to-face communication in a digital world[cite: 1, 2, 5]</h2>
+    
+    <h3>Learn: Article Transcript & Definitions</h3>
+    <div class="practice-box">
+        <p><strong>Excerpt:</strong> "It is easy to assume that the digital age is changing the way we communicate for the worse. With young people constantly checking their phones, there are fears that we are becoming an anti-social society. However, research suggests that being hyper-connected may actually help us nurture relationships and develop empathy..."[cite: 2, 5]</p>
+        <h4>Key C1/C2 Definitions:</h4>
+        <ul>
+            <li><strong>Empathy (C1):</strong> The ability to understand and share the feelings of another.</li>
+            <li><strong>Disconcerting (C2):</strong> Causing one to feel unsettled or confused.</li>
+            <li><strong>Hyper-connected (C1):</strong> Characterized by the widespread use of devices connected to the Internet.</li>
+        </ul>
+    </div>
+
+    <h3>Practice: Comprehension & MCQs</h3>
+    <div class="practice-box">
+        <p><strong>1. What does the writer say about text-based communication compared to face-to-face communication?[cite: 2]</strong></p>
+        <input type="radio" name="r1q1"> A) It is always less effective.<br>
+        <input type="radio" name="r1q1"> B) It lacks non-verbal cues that help convey empathy.<br>
+        <input type="radio" name="r1q1"> C) It is preferred by all adolescents.<br>
+        <p><strong>2. According to the global reading, what statement best describes the writer's overall position?[cite: 2, 5]</strong></p>
+        <input type="radio" name="r1q2"> A) Face-to-face communication remains vital despite digital substitutes.<br>
+        <input type="radio" name="r1q2"> B) Digital communication has fully replaced face-to-face interactions.<br>
+    </div>
+</div>
+
+<!-- READING 2 -->
+<div id="reading2" class="tab-content">
+    <h2>Reading 2: The rise of crowdfunding[cite: 1, 3]</h2>
+    
+    <h3>Learn: Article Transcript & Definitions</h3>
+    <div class="practice-box">
+        <p><strong>Excerpt:</strong> "Just over two decades ago, any entrepreneur with a new idea would have had to go to a venture capital company to receive funding. These days, they have another option: crowdfunding. This model allows small businesses to attract online backers who each invest small amounts of money in return for either a tangible reward or equity..."[cite: 3]</p>
+        <h4>Key C1/C2 Definitions:</h4>
+        <ul>
+            <li><strong>Entrepreneur (C1):</strong> A person who sets up a business, taking on financial risks in the hope of profit.</li>
+            <li><strong>Philanthropy (C2):</strong> The desire to promote the welfare of others, usually through the donation of money.</li>
+            <li><strong>Tangible (C1):</strong> Perceptible by touch; having physical substance.</li>
+        </ul>
+    </div>
+
+    <h3>Practice: Comprehension Questions</h3>
+    <div class="practice-box">
+        <p><strong>1. What kind of projects are most suitable for crowdfunding?[cite: 3]</strong></p>
+        <input type="text" style="width: 100%;"><br><br>
+        <p><strong>2. Why is crowdfunding a popular means of gaining investment?[cite: 3]</strong></p>
+        <input type="text" style="width: 100%;">
+    </div>
+</div>
+
+<!-- USAGE -->
+<div id="usage" class="tab-content">
+    <h2>Usage: Grammar & Sentence Transformation[cite: 1, 4]</h2>
+    
+    <h3>Learn: Grammar Rules</h3>
+    <div class="practice-box">
+        <h4>1. Concessive Clauses (Skillful 4, p. 22)[cite: 1, 4]</h4>
+        <p>Allow writers to acknowledge an alternative point of view before presenting their own (e.g., <em>Although, even though, despite, in spite of</em>). Note: <em>despite</em> and <em>in spite of</em> must be followed by a noun or gerund.[cite: 4]</p>
+        <h4>2. Participle Clauses (Skillful 4, p. 156)[cite: 1, 4]</h4>
+        <p>Used to make academic writing succinct. Present participle (-ing) has active meaning; past participle (-ed) has passive meaning. Used to express cause, time, effect, and condition.[cite: 4]</p>
+        <h4>3. Finite vs. Non-finite Verbs[cite: 1]</h4>
+        <p>Finite verbs show tense, person, and number. Non-finite verbs (infinitives, gerunds, participles) do not.[cite: 1]</p>
+    </div>
+
+    <h3>Practice: Transformation & Cloze</h3>
+    <div class="practice-box">
+        <p><strong>1. Sentence Transformation (Participle Clauses):</strong><br>
+        Because they wanted to create a change strategy, senior managers brought in a consultant.[cite: 4]<br>
+        <em>Rewrite starting with: Wanting...</em><br>
+        <input type="text" style="width: 100%;"></p>
+        
+        <p><strong>2. Concessive Clause MCQ:</strong><br>
+        _______ many adolescents constantly use smartphones, it is impossible to protect them at all times.[cite: 4]<br>
+        <input type="radio" name="u1"> A) Despite<br>
+        <input type="radio" name="u1"> B) Even though<br>
+        <input type="radio" name="u1"> C) In spite of</p>
+    </div>
+</div>
+
+<!-- VOCABULARY -->
+<div id="vocab" class="tab-content">
+    <h2>Vocabulary & Idioms (pp. 14-16, 18-19)[cite: 1, 2, 5]</h2>
+    
+    <h3>Learn: Definitions & Pronunciation</h3>
+    <div class="practice-box">
+        <ul>
+            <li><strong>Anti-social</strong> <span class="audio-btn">🔊 Play</span>: Contrary to the laws and customs of society.[cite: 2, 5]</li>
+            <li><strong>Empathy</strong> <span class="audio-btn">🔊 Play</span>: The ability to understand another's feelings.[cite: 2, 5]</li>
+            <li><strong>Nurture</strong> <span class="audio-btn">🔊 Play</span>: Care for and encourage the growth of.[cite: 2, 5]</li>
+            <li><strong>Equity</strong> <span class="audio-btn">🔊 Play</span>: The value of shares issued by a company.[cite: 3]</li>
+        </ul>
+    </div>
+
+    <h3>Memorize: Tap to Reveal</h3>
+    <div class="practice-box">
+        <p>Tap the dark boxes to test your memory of the vocabulary words.</p>
+        <ul>
+            <li>A person who sets up a business: <span class="vocab-cover" onclick="this.classList.toggle('revealed')">Entrepreneur</span></li>
+            <li>Perceptible by physical touch: <span class="vocab-cover" onclick="this.classList.toggle('revealed')">Tangible</span></li>
+            <li>Causing one to feel unsettled: <span class="vocab-cover" onclick="this.classList.toggle('revealed')">Disconcerting</span></li>
+        </ul>
+    </div>
+
+    <h3>Practice: Fill in the Blanks</h3>
+    <div class="practice-box">
+        <p>1. The new social media platform helps to <input type="text"> relationships across long distances.[cite: 2]</p>
+        <p>2. She showed great <input type="text"> for the users experiencing technical difficulties.[cite: 2]</p>
+    </div>
+</div>
+
+<!-- IELTS WRITING -->
+<div id="writing" class="tab-content">
+    <h2>IELTS Writing: Discussion/Opinion Essay[cite: 1]</h2>
+    
+    <h3>Learn: Essay Outline (Themes: Communication, Technology)[cite: 1]</h3>
+    <div class="practice-box">
+        <h4>Task 2 Discussion + Opinion Outline</h4>
+        <ul>
+            <li><strong>Introduction:</strong> Paraphrase the prompt. State both views briefly. Give your clear opinion.</li>
+            <li><strong>Body Paragraph 1 (View 1):</strong> Topic sentence introducing the first view. Explain why people hold this view (provide a specific tech/communication example).</li>
+            <li><strong>Body Paragraph 2 (View 2):</strong> Topic sentence introducing the opposing view. Explain the reasoning (e.g., benefits of face-to-face interaction vs digital).</li>
+            <li><strong>Body Paragraph 3 (Your Opinion):</strong> Reiterate your stance. Add a unique point or weigh the two views against each other.</li>
+            <li><strong>Conclusion:</strong> Summarize main points and restate your final opinion.</li>
+        </ul>
+    </div>
+
+    <h3>Practice: Essay Prompts</h3>
+    <div class="practice-box">
+        <p><strong>Prompt 1 (Technology & Communication):</strong> Some people believe that the widespread use of digital communication technologies has negatively impacted our ability to have meaningful face-to-face interactions. Others argue that it has made communication easier and more frequent. Discuss both views and give your own opinion.[cite: 1]</p>
+        <p><strong>Prompt 2 (Crowdfunding & Innovation):</strong> With the rise of crowdfunding, traditional venture capital is no longer necessary for technological innovation. To what extent do you agree or disagree?[cite: 1, 3]</p>
+        <textarea style="width: 100%; height: 150px;" placeholder="Outline or write your essay here..."></textarea>
+    </div>
+</div>
+
+<script>
+    function openTab(tabName) {
+        var i, tabcontent;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+</script>
+
+</body>
+</html>
